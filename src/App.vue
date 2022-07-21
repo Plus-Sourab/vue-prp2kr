@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="https://vuejs.org/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <h2>Volume Tracker </h2>
+  <h3>Current Volume - {{volume}}</h3>
+  <button @click= "volume+=2"> Increase</button>
+  <button @click= "volume-=2"> Decrease</button>
 </template>
 
 <script>
@@ -10,9 +10,19 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data(){
+    return{
+      volume: 0
+    }
+  },
+  watch: {
+    volume(newValue, oldValue){
+      if(newValue > oldValue && newValue===16){
+        alert("listening to a high volume for a long time may damage your hearing ")
+      }
+    }
+    
+  } 
 }
 </script>
 
